@@ -14,6 +14,7 @@
 #ifndef LLVM_CLANG_C_CXSTRING_H
 #define LLVM_CLANG_C_CXSTRING_H
 
+#include <stddef.h>
 #include "clang-c/ExternC.h"
 #include "clang-c/Platform.h"
 
@@ -36,6 +37,7 @@ LLVM_CLANG_C_EXTERN_C_BEGIN
  */
 typedef struct {
   const void *data;
+  size_t length;
   unsigned private_flags;
 } CXString;
 
@@ -52,6 +54,7 @@ typedef struct {
  * to `std::string::c_str()`.
  */
 CINDEX_LINKAGE const char *clang_getCString(CXString string);
+CINDEX_LINKAGE const char *clang_getCString2(CXString string, size_t *length);
 
 /**
  * Free the given string.
