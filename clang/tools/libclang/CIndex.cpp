@@ -4659,8 +4659,8 @@ CXString clang_EvalResult_getAsCXString(CXEvalResult E) {
     return cxstring::createNull();
   }
   size_t length;
-  auto data =
-      clang_getCString2(((ExprEvalResult *)E)->EvalData.stringVal, &length);
+  auto data = clang_getCStringAndLength(
+      ((ExprEvalResult *)E)->EvalData.stringVal, &length);
   return cxstring::createDup(StringRef(data, length));
 }
 

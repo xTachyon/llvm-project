@@ -59,7 +59,8 @@ CINDEX_LINKAGE const char *clang_getCString(CXString string);
  * returns the size through the length parameter. The length parameter should be
  * non-NULL.
  */
-CINDEX_LINKAGE const char *clang_getCString2(CXString string, size_t *length);
+CINDEX_LINKAGE const char *clang_getCStringAndLength(CXString string,
+                                                     size_t *length);
 
 /**
  * Free the given string.

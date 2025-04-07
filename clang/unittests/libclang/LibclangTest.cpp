@@ -647,7 +647,7 @@ const char str[] = "pika\0chu";
 
       auto lit = clang_EvalResult_getAsCXString(RE);
       size_t length;
-      auto str = clang_getCString2(lit, &length);
+      auto str = clang_getCStringAndLength(lit, &length);
 
       EXPECT_TRUE(length == expected_size &&
                   memcmp(str, expected, length) == 0);

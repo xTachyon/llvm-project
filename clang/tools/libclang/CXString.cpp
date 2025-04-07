@@ -167,7 +167,7 @@ const char *clang_getCString(CXString string) {
   return static_cast<const char *>(string.data);
 }
 
-const char *clang_getCString2(CXString string, size_t *length) {
+const char *clang_getCStringAndLength(CXString string, size_t *length) {
   auto ret = clang_getCString(string);
   *length =
       string.length == static_cast<size_t>(-1) ? strlen(ret) : string.length;

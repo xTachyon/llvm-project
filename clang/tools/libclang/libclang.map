@@ -440,7 +440,7 @@ LLVM_20 {
 
 LLVM_21 {
   global:
-    clang_getCString2;
+    clang_getCStringAndLength;
     clang_EvalResult_getAsCXString;
 };
 
