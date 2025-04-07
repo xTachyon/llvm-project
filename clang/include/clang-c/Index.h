@@ -5922,13 +5922,15 @@ CINDEX_LINKAGE double clang_EvalResult_getAsDouble(CXEvalResult E);
  * exceptions:
  * - the string literal will be truncated if a nul byte is found in the string.
  * For this reason clang_EvalResult_getAsCXString is recommended.
- * - User must not free this pointer, instead call clang_EvalResult_dispose on
- * the CXEvalResult returned by clang_Cursor_Evaluate.
+ * - the caller must not free this pointer; instead call
+ * clang_EvalResult_dispose on the CXEvalResult returned by
+ * clang_Cursor_Evaluate.
  */
 CINDEX_LINKAGE const char *clang_EvalResult_getAsStr(CXEvalResult E);
 /**
- * Returns the evaluation result as a constant string if the
+ * Returns the evaluation result as a CXString if the
  * kind is other than Int or float. This might include zero bytes.
+ * The caller is responsible for freeing the CXString using clang_disposeString.
  */
 CINDEX_LINKAGE CXString clang_EvalResult_getAsCXString(CXEvalResult E);
 
