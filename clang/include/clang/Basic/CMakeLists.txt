@@ -13,6 +13,11 @@ macro(clang_diag_gen component)
     -gen-clang-diags-compat-ids -clang-component=${component}
     SOURCE Diagnostic.td
     TARGET ClangDiagnostic${component}CompatIDs)
+
+  clang_tablegen(Diagnostic${component}Interface.inc
+    -gen-clang-diags-iface -clang-component=${component}
+    SOURCE Diagnostic.td
+    TARGET ClangDiagnostic${component}Interface)
 endmacro(clang_diag_gen)
 
 clang_diag_gen(Analysis)
@@ -81,6 +86,10 @@ clang_tablegen(Builtins.inc -gen-clang-builtins
 clang_tablegen(BuiltinsBPF.inc -gen-clang-builtins
   SOURCE BuiltinsBPF.td
   TARGET ClangBuiltinsBPF)
+
+clang_tablegen(BuiltinsDirectX.inc -gen-clang-builtins
+  SOURCE BuiltinsDirectX.td
+  TARGET ClangBuiltinsDirectX)
 
 clang_tablegen(BuiltinsHexagon.inc -gen-clang-builtins
   SOURCE BuiltinsHexagon.td
@@ -192,3 +201,12 @@ clang_tablegen(riscv_sifive_vector_builtin_cg.inc -gen-riscv-sifive-vector-built
 clang_tablegen(riscv_sifive_vector_builtin_sema.inc -gen-riscv-sifive-vector-builtin-sema
   SOURCE riscv_sifive_vector.td
   TARGET ClangRISCVSiFiveVectorBuiltinSema)
+clang_tablegen(riscv_andes_vector_builtins.inc -gen-riscv-andes-vector-builtins
+  SOURCE riscv_andes_vector.td
+  TARGET ClangRISCVAndesVectorBuiltins)
+clang_tablegen(riscv_andes_vector_builtin_cg.inc -gen-riscv-andes-vector-builtin-codegen
+  SOURCE riscv_andes_vector.td
+  TARGET ClangRISCVAndesVectorBuiltinCG)
+clang_tablegen(riscv_andes_vector_builtin_sema.inc -gen-riscv-andes-vector-builtin-sema
+  SOURCE riscv_andes_vector.td
+  TARGET ClangRISCVAndesVectorBuiltinSema)
